@@ -94,6 +94,8 @@ extern void  nr_phy_config_request(NR_PHY_Config_t *gNB);
 //extern PARALLEL_CONF_t get_thread_parallel_conf(void);
 //extern WORKER_CONF_t   get_thread_worker_conf(void);
 
+extern time_stats_t L1_tx_thread_stats; // total tx time
+
 void stop_RU(int nb_ru);
 
 void configure_ru(int idx, void *arg);
@@ -1077,6 +1079,9 @@ void *ru_stats_thread(void *param) {
   while (!oai_exit) {
     sleep(1);
 
+    
+    print_meas(&L1_tx_thread_stats,"L1_tx_thread_stats",NULL,NULL);
+    reset_meas(&L1_tx_thread_stats);
     if (opp_enabled == 1) {
       if (ru->feprx) print_meas(&ru->ofdm_demod_stats,"feprx (all ports)",NULL,NULL);
 
@@ -1191,7 +1196,7 @@ void *ru_thread( void *param ) {
 
   nr_init_frame_parms(&ru->config, fp);
   nr_dump_frame_parms(fp);
-  nr_phy_init_RU(ru);
+  nr_phy_init_RU(ru); 
   fill_rf_config(ru, ru->rf_config_file);
   fill_split7_2_config(&ru->openair0_cfg.split7, &ru->config, fp->slots_per_frame);
 
@@ -1267,6 +1272,7 @@ void *ru_thread( void *param ) {
 
     LOG_I(PHY,"RU %d RF started opp_enabled %d\n",ru->idx,opp_enabled);
     // start trx write thread
+
     if(usrp_tx_thread == 1) {
       if (ru->start_write_thread) {
         if(ru->start_write_thread(ru) != 0) {

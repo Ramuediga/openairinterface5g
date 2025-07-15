@@ -610,6 +610,9 @@ int start_L1L2(module_id_t gnb_id)
   //RU_t *ru = RC.ru[gnb_id];
   //MessageDef *msg_p = NULL;
   LOG_W(GNB_APP, "restarting nr-softmodem\n");
+
+//  return 0; //tempararily added this line and it should be removed afterwords: Rama_15042024
+
   /* block threads */
   sync_var = -1;
   RC.gNB[gnb_id]->configured = 0;

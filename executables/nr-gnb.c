@@ -103,6 +103,8 @@ time_stats_t softmodem_stats_rxtx_sf; // total tx time
 time_stats_t nfapi_meas; // total tx time
 time_stats_t softmodem_stats_rx_sf; // total rx time
 
+time_stats_t L1_tx_thread_stats; // total tx time
+
 
 #include "executables/thread-common.h"
 
@@ -153,12 +155,14 @@ static void tx_func(void *param)
   syncMsg->slot_rx = slot_rx;
   syncMsg->timestamp_tx = info->timestamp_tx;
   res->key = slot_rx;
-  pushNotifiedFIFO(&gNB->resp_L1, res);
 
+
+  pushNotifiedFIFO(&gNB->resp_L1, res);
   int tx_slot_type = nr_slot_select(cfg, frame_tx, slot_tx);
   if (tx_slot_type == NR_DOWNLINK_SLOT || tx_slot_type == NR_MIXED_SLOT || get_softmodem_params()->continuous_tx) {
     start_meas(&info->gNB->phy_proc_tx);
-    phy_procedures_gNB_TX(info, frame_tx, slot_tx, 1);
+    start_meas(&L1_tx_thread_stats);
+    phy_procedures_gNB_TX(info, frame_tx, slot_tx, 1); 
     const int rt_prof_idx = absslot_rx % RT_PROF_DEPTH;
     clock_gettime(CLOCK_MONOTONIC, &info->gNB->rt_L1_profiling.return_L1_TX[rt_prof_idx]);
 
@@ -169,6 +173,8 @@ static void tx_func(void *param)
     syncMsgRU.ru = gNB->RU_list[0];
     syncMsgRU.timestamp_tx = info->timestamp_tx;
     LOG_D(PHY, "gNB: %d.%d : calling RU TX function\n", syncMsgRU.frame_tx, syncMsgRU.slot_tx);
+
+  stop_meas(&L1_tx_thread_stats);
     ru_tx_func((void *)&syncMsgRU);
     stop_meas(&info->gNB->phy_proc_tx);
   }
@@ -186,6 +192,7 @@ void *L1_rx_thread(void *arg)
      notifiedFIFO_elt_t *res = pullNotifiedFIFO(&gNB->resp_L1);
      if (res == NULL)
        break;
+
      processingData_L1_t *info = (processingData_L1_t *)NotifiedFifoData(res);
      rx_func(info);
      delNotifiedFIFO_elt(res);
@@ -237,6 +244,7 @@ void rx_func(void *param)
   }
   // ****************************************
 
+
   // RX processing
   int rx_slot_type = nr_slot_select(cfg, frame_rx, slot_rx);
   if (rx_slot_type == NR_UPLINK_SLOT || rx_slot_type == NR_MIXED_SLOT) {
@@ -265,6 +273,7 @@ void rx_func(void *param)
     }
     phy_procedures_gNB_uespec_RX(gNB, frame_rx, slot_rx);
 
+
     // Call the scheduler
     start_meas(&gNB->ul_indication_stats);
     gNB->UL_INFO.frame = frame_rx;
@@ -281,7 +290,7 @@ void rx_func(void *param)
     syncMsg->slot_rx = slot_rx;
     res->key = slot_rx;
     LOG_D(NR_PHY, "Signaling completion for %d.%d (mod_slot %d) on L1_rx_out\n", frame_rx, slot_rx, slot_rx % RU_RX_SLOT_DEPTH);
-    pushNotifiedFIFO(&gNB->L1_rx_out, res);
+    pushNotifiedFIFO(&gNB->L1_rx_out, res); 
   }
 
   stop_meas(&softmodem_stats_rxtx_sf);
@@ -398,7 +407,7 @@ void init_gNB_Tpool(int inst) {
   // this will be removed when the msgDataTx is not necessary anymore
   gNB->msgDataTx = msgDataTx;
 
-  if ((!get_softmodem_params()->emulate_l1) && (!IS_SOFTMODEM_NOSTATS_BIT) && (NFAPI_MODE!=NFAPI_MODE_VNF))
+  // if ((!get_softmodem_params()->emulate_l1) && (!IS_SOFTMODEM_NOSTATS_BIT) && (NFAPI_MODE!=NFAPI_MODE_VNF))
      threadCreate(&proc->L1_stats_thread,nrL1_stats_thread,(void*)gNB,"L1_stats",-1,OAI_PRIORITY_RT_LOW);
 
 }

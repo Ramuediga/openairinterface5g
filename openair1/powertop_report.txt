@@ -1,0 +1,898 @@
+____________________________________________________________________
+			P o w e r T O P
+
+____________________________________________________________________
+ *  *  *   System Information   *  *  *
+
+PowerTOP Version;v2.11-1-g7ef7f79 ran at Fri Apr 19 12:07:50 2024
+
+Kernel Version;Linux version 5.4.0-169-generic
+System Name;HP8455
+CPU Information;8 Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz
+OS Information;Ubuntu 20.04.5 LTS
+
+Target: 1 units/s;System:  1397.5 wakeup/s;CPU:  15.9% usage;GPU: 0 ops/s;GFX: 125.5 wakeups/s;VFS: 0 ops/s;
+
+____________________________________________________________________
+ *  *  *   Top 10 Power Consumers   *  *  *
+
+Usage;Events/s;Category;Description;PW Estimate
+  3.3%;312.7;Process;[PID 1912226] /usr/lib/firefox/firefox ;  1.37 W  
+  0.1%;316.8;Timer;tick_sched_timer;  1.25 W  
+  0.0%;  1.1;Process;[PID 3004] /usr/bin/pulseaudio --daemonize=no --log-target=journal ;  505 mW  
+  0.1%; 69.4;Process;[PID 3093] /usr/bin/pulseaudio --daemonize=no --log-target=journal ;  280 mW  
+  0.1%; 62.3;Timer;hrtimer_wakeup;  247 mW  
+  0.0%; 56.7;Process;[PID 1912297] /usr/lib/firefox/firefox ;  224 mW  
+  0.2%; 44.2;Process;[PID 3486] gnome-panel ;  189 mW  
+  0.1%; 37.4;Process;[PID 3384] metacity ;  162 mW  
+  0.0%; 40.5;Process;[PID 10] [rcu_sched];  160 mW  
+  1.3%; 28.8;Process;[PID 2019136] /usr/lib/firefox/firefox -contentproc -childID 18 -isForBrowser -prefsLen 32792 -prefMapSize 239271 -jsInitLen 23;  134 mW  
+
+____________________________________________________________________
+ *  *  *   Processor Idle State Report   *  *  *
+
+Package;0
+C2 (pc2);  0.0%
+C3 (pc3);  0.0%
+C6 (pc6);  0.0%
+C7 (pc7);  0.0%
+C8 (pc8);  0.0%
+C9 (pc9);  0.0%
+C10 (pc10);  0.0%
+;
+;
+;
+;
+;
+
+;Core 0
+C3 (cc3);  0.0%
+C6 (cc6);  0.0%
+C7 (cc7);  0.0%
+;Core 1
+C3 (cc3);  0.0%
+C6 (cc6);  0.0%
+C7 (cc7);  0.0%
+;Core 2
+C3 (cc3);  0.0%
+C6 (cc6);  0.0%
+C7 (cc7);  0.0%
+;Core 3
+C3 (cc3);  0.0%
+C6 (cc6);  0.0%
+C7 (cc7);  0.0%
+;Core 4
+C3 (cc3);  0.0%
+C6 (cc6);  0.0%
+C7 (cc7);  0.0%
+;Core 5
+C3 (cc3);  0.0%
+C6 (cc6);  0.0%
+C7 (cc7);  0.0%
+;Core 6
+C3 (cc3);  0.0%
+C6 (cc6);  0.0%
+C7 (cc7);  0.0%
+;Core 7
+C3 (cc3);  0.0%
+C6 (cc6);  0.0%
+C7 (cc7);  0.0%
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+
+CPU;0
+C0 active;141.5%;
+;
+;
+;
+;
+;
+;
+;
+CPU;1
+C0 active;141.5%;
+;
+;
+;
+;
+;
+;
+;
+CPU;2
+C0 active;141.5%;
+;
+;
+;
+;
+;
+;
+;
+CPU;3
+C0 active;141.5%;
+;
+;
+;
+;
+;
+;
+;
+CPU;4
+C0 active;141.5%;
+;
+;
+;
+;
+;
+;
+;
+CPU;5
+C0 active;141.5%;
+;
+;
+;
+;
+;
+;
+;
+CPU;6
+C0 active;141.5%;
+;
+;
+;
+;
+;
+;
+;
+CPU;7
+C0 active;141.5%;
+;
+;
+;
+;
+;
+;
+;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+
+____________________________________________________________________
+ *  *  *   Processor Frequency Report   *  *  *
+
+Package;0
+Turbo Mode;   0.0% 
+3.00 GHz;   0.0% 
+2.81 GHz;   0.0% 
+2.71 GHz;   0.0% 
+2.50 GHz;   0.0% 
+2.40 GHz;   0.0% 
+2.21 GHz;   0.0% 
+2.10 GHz;   0.0% 
+1.91 GHz;   0.0% 
+1.71 GHz;   0.0% 
+1.60 GHz;   0.0% 
+1400 MHz;   0.0% 
+1300 MHz;   0.0% 
+1100 MHz;   0.0% 
+1000 MHz;   0.0% 
+ 800 MHz;   0.0% 
+Idle; 100.0% 
+;
+;
+;
+
+;Core 0
+Turbo Mode;   0.0% 
+3.00 GHz;   0.0% 
+2.81 GHz;   0.0% 
+2.71 GHz;   0.0% 
+2.50 GHz;   0.0% 
+2.40 GHz;   0.0% 
+2.21 GHz;   0.0% 
+2.10 GHz;   0.0% 
+1.91 GHz;   0.0% 
+1.71 GHz;   0.0% 
+1.60 GHz;   0.0% 
+1400 MHz;   0.0% 
+1300 MHz;   0.0% 
+1100 MHz;   0.0% 
+1000 MHz;   0.0% 
+ 800 MHz;   0.0% 
+Idle; 100.0% 
+;Core 1
+Turbo Mode;   0.0% 
+3.00 GHz;   0.0% 
+2.81 GHz;   0.0% 
+2.71 GHz;   0.0% 
+2.50 GHz;   0.0% 
+2.40 GHz;   0.0% 
+2.21 GHz;   0.0% 
+2.10 GHz;   0.0% 
+1.91 GHz;   0.0% 
+1.71 GHz;   0.0% 
+1.60 GHz;   0.0% 
+1400 MHz;   0.0% 
+1300 MHz;   0.0% 
+1100 MHz;   0.0% 
+1000 MHz;   0.0% 
+ 800 MHz;   0.0% 
+Idle; 100.0% 
+;Core 2
+Turbo Mode;   0.0% 
+3.00 GHz;   0.0% 
+2.81 GHz;   0.0% 
+2.71 GHz;   0.0% 
+2.50 GHz;   0.0% 
+2.40 GHz;   0.0% 
+2.21 GHz;   0.0% 
+2.10 GHz;   0.0% 
+1.91 GHz;   0.0% 
+1.71 GHz;   0.0% 
+1.60 GHz;   0.0% 
+1400 MHz;   0.0% 
+1300 MHz;   0.0% 
+1100 MHz;   0.0% 
+1000 MHz;   0.0% 
+ 800 MHz;   0.0% 
+Idle; 100.0% 
+;Core 3
+Turbo Mode;   0.0% 
+3.00 GHz;   0.0% 
+2.81 GHz;   0.0% 
+2.71 GHz;   0.0% 
+2.50 GHz;   0.0% 
+2.40 GHz;   0.0% 
+2.21 GHz;   0.0% 
+2.10 GHz;   0.0% 
+1.91 GHz;   0.0% 
+1.71 GHz;   0.0% 
+1.60 GHz;   0.0% 
+1400 MHz;   0.0% 
+1300 MHz;   0.0% 
+1100 MHz;   0.0% 
+1000 MHz;   0.0% 
+ 800 MHz;   0.0% 
+Idle; 100.0% 
+;Core 4
+Turbo Mode;   0.0% 
+3.00 GHz;   0.0% 
+2.81 GHz;   0.0% 
+2.71 GHz;   0.0% 
+2.50 GHz;   0.0% 
+2.40 GHz;   0.0% 
+2.21 GHz;   0.0% 
+2.10 GHz;   0.0% 
+1.91 GHz;   0.0% 
+1.71 GHz;   0.0% 
+1.60 GHz;   0.0% 
+1400 MHz;   0.0% 
+1300 MHz;   0.0% 
+1100 MHz;   0.0% 
+1000 MHz;   0.0% 
+ 800 MHz;   0.0% 
+Idle; 100.0% 
+;Core 5
+Turbo Mode;   0.0% 
+3.00 GHz;   0.0% 
+2.81 GHz;   0.0% 
+2.71 GHz;   0.0% 
+2.50 GHz;   0.0% 
+2.40 GHz;   0.0% 
+2.21 GHz;   0.0% 
+2.10 GHz;   0.0% 
+1.91 GHz;   0.0% 
+1.71 GHz;   0.0% 
+1.60 GHz;   0.0% 
+1400 MHz;   0.0% 
+1300 MHz;   0.0% 
+1100 MHz;   0.0% 
+1000 MHz;   0.0% 
+ 800 MHz;   0.0% 
+Idle; 100.0% 
+;Core 6
+Turbo Mode;   0.0% 
+3.00 GHz;   0.0% 
+2.81 GHz;   0.0% 
+2.71 GHz;   0.0% 
+2.50 GHz;   0.0% 
+2.40 GHz;   0.0% 
+2.21 GHz;   0.0% 
+2.10 GHz;   0.0% 
+1.91 GHz;   0.0% 
+1.71 GHz;   0.0% 
+1.60 GHz;   0.0% 
+1400 MHz;   0.0% 
+1300 MHz;   0.0% 
+1100 MHz;   0.0% 
+1000 MHz;   0.0% 
+ 800 MHz;   0.0% 
+Idle; 100.0% 
+;Core 7
+Turbo Mode;   0.0% 
+3.00 GHz;   0.0% 
+2.81 GHz;   0.0% 
+2.71 GHz;   0.0% 
+2.50 GHz;   0.0% 
+2.40 GHz;   0.0% 
+2.21 GHz;   0.0% 
+2.10 GHz;   0.0% 
+1.91 GHz;   0.0% 
+1.71 GHz;   0.0% 
+1.60 GHz;   0.0% 
+1400 MHz;   0.0% 
+1300 MHz;   0.0% 
+1100 MHz;   0.0% 
+1000 MHz;   0.0% 
+ 800 MHz;   0.0% 
+Idle; 100.0% 
+
+CPU 0
+Average;4.3 GHz
+Turbo Mode;   0.0% 
+3.00 GHz;   0.0% 
+2.81 GHz;   0.0% 
+2.71 GHz;   0.0% 
+2.50 GHz;   0.0% 
+2.40 GHz;   0.0% 
+2.21 GHz;   0.0% 
+2.10 GHz;   0.0% 
+1.91 GHz;   0.0% 
+1.71 GHz;   0.0% 
+1.60 GHz;   0.0% 
+1400 MHz;   0.0% 
+1300 MHz;   0.0% 
+1100 MHz;   0.0% 
+1000 MHz;   0.0% 
+ 800 MHz;   0.0% 
+Idle; 100.0% 
+CPU 1
+Average;4.3 GHz
+Turbo Mode;   0.0% 
+3.00 GHz;   0.0% 
+2.81 GHz;   0.0% 
+2.71 GHz;   0.0% 
+2.50 GHz;   0.0% 
+2.40 GHz;   0.0% 
+2.21 GHz;   0.0% 
+2.10 GHz;   0.0% 
+1.91 GHz;   0.0% 
+1.71 GHz;   0.0% 
+1.60 GHz;   0.0% 
+1400 MHz;   0.0% 
+1300 MHz;   0.0% 
+1100 MHz;   0.0% 
+1000 MHz;   0.0% 
+ 800 MHz;   0.0% 
+Idle; 100.0% 
+CPU 2
+Average;4.3 GHz
+Turbo Mode;   0.0% 
+3.00 GHz;   0.0% 
+2.81 GHz;   0.0% 
+2.71 GHz;   0.0% 
+2.50 GHz;   0.0% 
+2.40 GHz;   0.0% 
+2.21 GHz;   0.0% 
+2.10 GHz;   0.0% 
+1.91 GHz;   0.0% 
+1.71 GHz;   0.0% 
+1.60 GHz;   0.0% 
+1400 MHz;   0.0% 
+1300 MHz;   0.0% 
+1100 MHz;   0.0% 
+1000 MHz;   0.0% 
+ 800 MHz;   0.0% 
+Idle; 100.0% 
+CPU 3
+Average;4.3 GHz
+Turbo Mode;   0.0% 
+3.00 GHz;   0.0% 
+2.81 GHz;   0.0% 
+2.71 GHz;   0.0% 
+2.50 GHz;   0.0% 
+2.40 GHz;   0.0% 
+2.21 GHz;   0.0% 
+2.10 GHz;   0.0% 
+1.91 GHz;   0.0% 
+1.71 GHz;   0.0% 
+1.60 GHz;   0.0% 
+1400 MHz;   0.0% 
+1300 MHz;   0.0% 
+1100 MHz;   0.0% 
+1000 MHz;   0.0% 
+ 800 MHz;   0.0% 
+Idle; 100.0% 
+CPU 4
+Average;4.3 GHz
+Turbo Mode;   0.0% 
+3.00 GHz;   0.0% 
+2.81 GHz;   0.0% 
+2.71 GHz;   0.0% 
+2.50 GHz;   0.0% 
+2.40 GHz;   0.0% 
+2.21 GHz;   0.0% 
+2.10 GHz;   0.0% 
+1.91 GHz;   0.0% 
+1.71 GHz;   0.0% 
+1.60 GHz;   0.0% 
+1400 MHz;   0.0% 
+1300 MHz;   0.0% 
+1100 MHz;   0.0% 
+1000 MHz;   0.0% 
+ 800 MHz;   0.0% 
+Idle; 100.0% 
+CPU 5
+Average;4.3 GHz
+Turbo Mode;   0.0% 
+3.00 GHz;   0.0% 
+2.81 GHz;   0.0% 
+2.71 GHz;   0.0% 
+2.50 GHz;   0.0% 
+2.40 GHz;   0.0% 
+2.21 GHz;   0.0% 
+2.10 GHz;   0.0% 
+1.91 GHz;   0.0% 
+1.71 GHz;   0.0% 
+1.60 GHz;   0.0% 
+1400 MHz;   0.0% 
+1300 MHz;   0.0% 
+1100 MHz;   0.0% 
+1000 MHz;   0.0% 
+ 800 MHz;   0.0% 
+Idle; 100.0% 
+CPU 6
+Average;4.3 GHz
+Turbo Mode;   0.0% 
+3.00 GHz;   0.0% 
+2.81 GHz;   0.0% 
+2.71 GHz;   0.0% 
+2.50 GHz;   0.0% 
+2.40 GHz;   0.0% 
+2.21 GHz;   0.0% 
+2.10 GHz;   0.0% 
+1.91 GHz;   0.0% 
+1.71 GHz;   0.0% 
+1.60 GHz;   0.0% 
+1400 MHz;   0.0% 
+1300 MHz;   0.0% 
+1100 MHz;   0.0% 
+1000 MHz;   0.0% 
+ 800 MHz;   0.0% 
+Idle; 100.0% 
+CPU 7
+Average;4.3 GHz
+Turbo Mode;   0.0% 
+3.00 GHz;   0.0% 
+2.81 GHz;   0.0% 
+2.71 GHz;   0.0% 
+2.50 GHz;   0.0% 
+2.40 GHz;   0.0% 
+2.21 GHz;   0.0% 
+2.10 GHz;   0.0% 
+1.91 GHz;   0.0% 
+1.71 GHz;   0.0% 
+1.60 GHz;   0.0% 
+1400 MHz;   0.0% 
+1300 MHz;   0.0% 
+1100 MHz;   0.0% 
+1000 MHz;   0.0% 
+ 800 MHz;   0.0% 
+Idle; 100.0% 
+;
+;
+;
+;
+;
+;
+;
+;
+
+____________________________________________________________________
+ *  *  *   Overview of Software Power Consumers   *  *  *
+
+Usage;Wakeups/s;GPU ops/s;Disk IO/s;GFX Wakeups/s;Category;Description;PW Estimate
+ 33.0 ms/s;312.7;;; 87.6;Process;[PID 1912226] /usr/lib/firefox/firefox ;  1.37 W  
+  1.2 ms/s;316.8;;;;Timer;tick_sched_timer;  1.25 W  
+ 35.7 us/s;  1.1;;;;Process;[PID 3004] /usr/bin/pulseaudio --daemonize=no --log-target=journal ;  505 mW  
+681.6 us/s; 69.4;;;  4.5;Process;[PID 3093] /usr/bin/pulseaudio --daemonize=no --log-target=journal ;  280 mW  
+689.8 us/s; 62.3;;;;Timer;hrtimer_wakeup;  247 mW  
+264.0 us/s; 56.7;;;;Process;[PID 1912297] /usr/lib/firefox/firefox ;  224 mW  
+  2.4 ms/s; 44.2;;; 10.6;Process;[PID 3486] gnome-panel ;  189 mW  
+  0.8 ms/s; 37.4;;; 12.8;Process;[PID 3384] metacity ;  162 mW  
+ 48.8 us/s; 40.5;;;;Process;[PID 10] [rcu_sched];  160 mW  
+ 12.7 ms/s; 28.8;;;;Process;[PID 2019136] /usr/lib/firefox/firefox -contentproc -childID 18 -isForBrowser -prefsLen 32792 -prefMapSize 239271 -jsInitLen 23;  134 mW  
+427.5 us/s; 29.4;;;;Process;[PID 2019139] /usr/lib/firefox/firefox -contentproc -childID 18 -isForBrowser -prefsLen 32792 -prefMapSize 239271 -jsInitLen 23;  117 mW  
+ 10.2 ms/s; 24.9;;;;kWork;nouveau_cli_work;  115 mW  
+505.3 us/s; 26.9;;;;Process;[PID 1912238] /usr/lib/firefox/firefox ;  107 mW  
+ 11.6 ms/s; 19.9;;;  5.9;Process;[PID 3092] /usr/lib/xorg/Xorg vt2 -displayfd 3 -auth /run/user/1000/gdm/Xauthority -background none -noreset -keeptty -verbose ;  103 mW  
+  4.2 ms/s; 20.7;;;;Process;[PID 1912361] /usr/lib/firefox/firefox -contentproc -childID 2 -isForBrowser -prefsLen 35069 -prefMapSize 239271 -jsInitLen 234; 88.3 mW  
+ 44.3 us/s; 20.1;;;;Process;[PID 1317] /usr/lib/snapd/snapd ; 79.4 mW  
+  2.1 ms/s; 18.0;;;;kWork;ttm_bo_delayed_workqueue; 74.4 mW  
+ 98.6 us/s; 17.3;;;;Process;[PID 1912235] /usr/lib/firefox/firefox ; 68.5 mW  
+200.4 us/s; 17.2;;;;kWork;delayed_fput; 68.2 mW  
+ 45.8 us/s; 16.4;;;;kWork;psi_avgs_work; 64.8 mW  
+  2.0 ms/s; 14.4;;;  1.7;Process;[PID 3619] /usr/libexec/gnome-terminal-server ; 61.9 mW  
+  1.0 ms/s; 11.7;;;;Process;[PID 1912237] /usr/lib/firefox/firefox ; 47.8 mW  
+659.0 us/s; 10.4;;;;Process;[PID 1] /sbin/init ; 42.1 mW  
+258.1 us/s; 10.0;;;;Process;[PID 1912234] /usr/lib/firefox/firefox ; 39.9 mW  
+ 22.0 ms/s; 0.10;;;;kWork;fqdir_work_fn; 34.8 mW  
+ 23.0 us/s;  8.1;;;;Process;[PID 1283] /usr/bin/containerd ; 32.0 mW  
+680.9 us/s;  7.5;;;;Interrupt;[3] net_rx(softirq); 30.7 mW  
+ 12.1 ms/s; 0.25;;;;kWork;slab_caches_to_rcu_destroy_work; 19.9 mW  
+  1.5 ms/s;  3.8;;;;Interrupt;[145] nvkm; 17.6 mW  
+ 37.4 us/s;  4.3;;;;Process;[PID 1547] /usr/bin/mongod --unixSocketPrefix=/run/mongodb --config /etc/mongodb.conf ; 17.0 mW  
+250.7 us/s;  4.1;;;;Process;[PID 1516750] /lib/systemd/systemd-udevd ; 16.6 mW  
+  8.2 ms/s;  0.9;;;;kWork;key_garbage_collector; 16.4 mW  
+366.0 us/s;  4.0;;;;Process;[PID 311] /lib/systemd/systemd-journald ; 16.4 mW  
+ 22.0 us/s;  4.1;;;;Process;[PID 2618] /usr/bin/open5gs-mmed -c /etc/open5gs/mme.yaml ; 16.2 mW  
+ 11.6 us/s;  4.0;;;;Process;[PID 1267] /usr/bin/influxd -config /etc/influxdb/influxdb.conf ; 16.0 mW  
+ 22.0 us/s;  4.0;;;;Process;[PID 2620] /usr/bin/open5gs-smfd -c /etc/open5gs/smf.yaml ; 15.8 mW  
+ 82.7 us/s;  3.9;;;;Process;[PID 1096] /lib/systemd/systemd-logind ; 15.7 mW  
+ 24.2 us/s;  3.9;;;;Process;[PID 2617] /usr/bin/open5gs-pcrfd -c /etc/open5gs/pcrf.yaml ; 15.6 mW  
+ 21.9 us/s;  3.8;;;;Process;[PID 2616] /usr/bin/open5gs-hssd -c /etc/open5gs/hss.yaml ; 15.0 mW  
+ 33.7 us/s;  3.7;;;;Process;[PID 1361] /usr/bin/containerd ; 14.9 mW  
+ 17.0 us/s;  3.7;;;;Process;[PID 1539] /usr/bin/mongod --unixSocketPrefix=/run/mongodb --config /etc/mongodb.conf ; 14.8 mW  
+ 37.0 us/s;  3.6;;;;Process;[PID 6200] /usr/bin/containerd ; 14.3 mW  
+699.8 us/s;  3.3;;;;Process;[PID 1912479] /usr/lib/firefox/firefox -contentproc -childID 6 -isForBrowser -prefsLen 31993 -prefMapSize 239271 -jsInitLen 234; 14.1 mW  
+  3.0 ms/s;  2.3;;;;Process;[PID 1189] /usr/bin/influxd -config /etc/influxdb/influxdb.conf ; 14.0 mW  
+ 11.6 us/s;  3.4;;;;Process;[PID 1358] /usr/bin/influxd -config /etc/influxdb/influxdb.conf ; 13.6 mW  
+ 34.9 us/s;  3.4;;;;Process;[PID 396157] netopeer2-server -v3 -t 60 ; 13.5 mW  
+ 31.0 us/s;  3.4;;;;Process;[PID 396172] netopeer2-server -v3 -t 60 ; 13.5 mW  
+ 32.4 us/s;  3.3;;;;Process;[PID 1360] /usr/bin/containerd ; 13.1 mW  
+ 28.9 us/s;  2.8;;;  1.6;Process;[PID 1912593] /usr/lib/firefox/firefox -contentproc -childID 8 -isForBrowser -prefsLen 32353 -prefMapSize 239271 -jsInitLen 234; 12.8 mW  
+ 43.1 us/s;  2.9;;;;Process;[PID 1739221] /usr/sbin/rsyslogd -n -iNONE ; 11.7 mW  
+ 49.9 us/s;  2.9;;;;Process;[PID 2079791] powertop --csv=powertop_report.txt --time=20s ; 11.5 mW  
+ 30.8 us/s;  2.9;;;;Process;[PID 396171] netopeer2-server -v3 -t 60 ; 11.5 mW  
+ 18.4 us/s;  2.1;;;  0.5;Process;[PID 3273] /usr/libexec/at-spi2-registryd --use-gnome-session ; 9.07 mW  
+ 71.5 us/s;  2.1;;;;Process;[PID 1912490] /usr/lib/firefox/firefox -contentproc -childID 6 -isForBrowser -prefsLen 31993 -prefMapSize 239271 -jsInitLen 234; 8.60 mW  
+  4.2 ms/s; 0.15;;;;Process;[PID 2079721] Isolated Web Co; 7.09 mW  
+ 64.5 us/s;  1.7;;;;Process;[PID 2019004] /usr/lib/firefox/firefox -contentproc -childID 16 -isForBrowser -prefsLen 32792 -prefMapSize 239271 -jsInitLen 23; 7.01 mW  
+ 73.5 us/s;  1.7;;;;Process;[PID 1926] /opt/teamviewer/tv_bin/teamviewerd -d ; 6.83 mW  
+ 62.4 us/s;  1.6;;;;Process;[PID 1353] /usr/bin/influxd -config /etc/influxdb/influxdb.conf ; 6.42 mW  
+  3.5 ms/s; 0.10;;;;kWork;cleanup_net; 5.89 mW  
+  0.9 ms/s;  1.0;;;;Process;[PID 1912465] /usr/lib/firefox/firefox -contentproc -childID 4 -isForBrowser -prefsLen 31993 -prefMapSize 239271 -jsInitLen 234; 5.61 mW  
+294.0 us/s;  1.3;;;;Interrupt;[123] xhci_hcd; 5.59 mW  
+ 18.3 us/s;  1.3;;;;Process;[PID 1873] /opt/teamviewer/tv_bin/teamviewerd -d ; 5.16 mW  
+ 29.2 us/s;  1.1;;;  0.1;Process;[PID 3327] /usr/bin/gnome-flashback ; 4.74 mW  
+ 13.3 us/s;  1.1;;;;kWork;free_work; 4.56 mW  
+517.3 us/s;  0.9;;;;Process;[PID 1807576] /lib/systemd/systemd-udevd ; 4.36 mW  
+  1.8 ms/s;  0.3;;;;Process;[PID 1354] /usr/bin/influxd -config /etc/influxdb/influxdb.conf ; 4.19 mW  
+ 10.3 us/s;  1.0;;;;Process;[PID 2019012] /usr/lib/firefox/firefox -contentproc -childID 16 -isForBrowser -prefsLen 32792 -prefMapSize 239271 -jsInitLen 23; 4.16 mW  
+  3.5 us/s;  1.0;;;;Process;[PID 157876] /usr/bin/influxd -config /etc/influxdb/influxdb.conf ; 4.15 mW  
+ 49.9 us/s;  0.9;;;;Process;[PID 1355] /usr/bin/influxd -config /etc/influxdb/influxdb.conf ; 3.83 mW  
+ 21.4 us/s;  0.9;;;;Process;[PID 1767891] /usr/lib/accountsservice/accounts-daemon ; 3.78 mW  
+ 37.7 us/s;  0.9;;;;Process;[PID 1912415] /usr/lib/firefox/firefox -contentproc -childID 3 -isForBrowser -prefsLen 31887 -prefMapSize 239271 -jsInitLen 234; 3.61 mW  
+413.8 us/s;  0.7;;;;Process;[PID 1805838] /lib/systemd/systemd-udevd ; 3.61 mW  
+ 28.7 us/s;  0.9;;;;kWork;css_free_rwork_fn; 3.60 mW  
+ 86.3 us/s;  0.8;;;;kWork;kmemcg_workfn; 3.49 mW  
+352.7 us/s;  0.6;;;;kWork;memcg_kmem_cache_create_func; 3.12 mW  
+197.0 us/s;  0.7;;;;kWork;ixgbe_service_task; 3.07 mW  
+ 46.3 us/s;  0.7;;;;Process;[PID 1739223] /usr/sbin/rsyslogd -n -iNONE ; 3.03 mW  
+  6.0 us/s;  0.7;;;;Process;[PID 1912488] /usr/lib/firefox/firefox -contentproc -childID 4 -isForBrowser -prefsLen 31993 -prefMapSize 239271 -jsInitLen 234; 2.97 mW  
+  0.9 us/s;  0.7;;;;kWork;vmstat_shepherd; 2.96 mW  
+  0.5 us/s;  0.7;;;;kWork;flush_backlog; 2.96 mW  
+  3.6 us/s;  0.7;;;;kWork;fsnotify_connector_destroy_work; 2.77 mW  
+  1.7 us/s;  0.7;;;;kWork;blk_mq_requeue_work; 2.77 mW  
+495.8 us/s;  0.5;;;;Process;[PID 1807311] /lib/systemd/systemd-udevd ; 2.75 mW  
+598.6 us/s;  0.4;;;;Process;[PID 1805832] /lib/systemd/systemd-udevd ; 2.71 mW  
+311.6 us/s;  0.5;;;;Process;[PID 1805841] /lib/systemd/systemd-udevd ; 2.46 mW  
+272.7 us/s;  0.5;;;;Process;[PID 1805833] /lib/systemd/systemd-udevd ; 2.40 mW  
+266.8 us/s;  0.5;;;;Process;[PID 1806522] /lib/systemd/systemd-udevd ; 2.39 mW  
+  7.7 us/s;  0.6;;;;Process;[PID 1912672] /usr/lib/speech-dispatcher-modules/sd_espeak-ng /etc/speech-dispatcher/modules/espeak-ng.conf ; 2.38 mW  
+387.4 us/s;  0.4;;;;Process;[PID 1806654] /lib/systemd/systemd-udevd ; 2.38 mW  
+  1.0 us/s;  0.6;;;;kWork;console_callback; 2.37 mW  
+ 87.5 us/s;  0.5;;;;Process;[PID 13723] /usr/lib/snapd/snapd ; 2.31 mW  
+ 69.4 us/s;  0.5;;;;Process;[PID 2079194] /usr/lib/firefox/firefox -contentproc -childID 25 -isForBrowser -prefsLen 32792 -prefMapSize 239271 -jsInitLen 23; 2.28 mW  
+289.6 us/s;  0.4;;;;Process;[PID 1805837] /lib/systemd/systemd-udevd ; 2.23 mW  
+  2.9 us/s;  0.5;;;;Process;[PID 1597] /usr/bin/open5gs-hssd -c /etc/open5gs/hss.yaml ; 2.18 mW  
+  2.9 us/s;  0.5;;;;Process;[PID 1594] /usr/bin/open5gs-hssd -c /etc/open5gs/hss.yaml ; 2.18 mW  
+316.3 us/s;  0.4;;;;Process;[PID 1805836] /lib/systemd/systemd-udevd ; 2.07 mW  
+295.2 us/s;  0.4;;;;Process;[PID 1805834] /lib/systemd/systemd-udevd ; 2.04 mW  
+ 36.9 us/s;  0.5;;;;Process;[PID 1145] /usr/bin/open5gs-scpd -c /etc/open5gs/scp.yaml ; 2.03 mW  
+ 36.1 us/s;  0.5;;;;Process;[PID 2079125] /usr/lib/firefox/firefox -contentproc -childID 22 -isForBrowser -prefsLen 32792 -prefMapSize 239271 -jsInitLen 23; 2.03 mW  
+ 14.7 us/s;  0.5;;;;Process;[PID 1912367] /usr/lib/firefox/firefox -contentproc -childID 2 -isForBrowser -prefsLen 35069 -prefMapSize 239271 -jsInitLen 234; 2.00 mW  
+
+
+The system baseline power is estimated at:  64.8  W;
+____________________________________________________________________
+ *  *  *   Device Power Report   *  *  *
+
+Usage;Device Name;PW Estimate
+ 16.0%;CPU core;  58.5 W   
+ 16.0%;CPU misc;  4.55 W   
+ 16.0%;DRAM;  1.22 W   
+100.0%;Audio codec hwC0D0: Conexant (pulseaudio );           
+128.4 pkts/s;Network interface: eno1 (e1000e);           
+100.0%;USB device: HP USB Optical Mouse (PixArt);           
+100.0%;USB device: USB 10/100/1000 LAN (Realtek);           
+100.0%;USB device: USB Keyboard (Logitech);           
+100.0%;USB device: xHCI Host Controller;           
+100.0%;USB device: xHCI Host Controller;           
+100.0%;PCI Device: Intel Corporation SATA Controller [RAID mode];           
+100.0%;PCI Device: Intel Corporation Cannon Point-LP LPC Controller;           
+100.0%;PCI Device: Intel Corporation Ethernet Controller 10G X550T;           
+100.0%;PCI Device: Intel Corporation Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor PCIe Controller (x16);           
+100.0%;PCI Device: Intel Corporation Cannon Lake PCH cAVS;           
+100.0%;PCI Device: Intel Corporation Ethernet Connection (7) I219-LM;           
+100.0%;PCI Device: Intel Corporation Cannon Lake PCH Shared SRAM;           
+100.0%;PCI Device: Intel Corporation Cannon Lake PCH PCI Express Root Port #9;           
+100.0%;PCI Device: Intel Corporation Ethernet Controller 10G X550T;           
+100.0%;PCI Device: Intel Corporation Cannon Lake PCH USB 3.1 xHCI Host Controller;           
+100.0%;PCI Device: Intel Corporation Cannon Lake PCH SPI Controller;           
+100.0%;PCI Device: NVIDIA Corporation GP107GL [Quadro P400];           
+100.0%;PCI Device: Intel Corporation Cannon Lake PCH Thermal Controller;           
+100.0%;PCI Device: Intel Corporation 8th Gen Core 8-core Desktop Processor Host Bridge/DRAM Registers [Coffee Lake S];           
+  0.0%;PCI Device: NVIDIA Corporation GP107GL High Definition Audio Controller;           
+  0.0%;PCI Device: Intel Corporation Cannon Lake PCH HECI Controller;           
+  0.0 pkts/s;nic:br-1a4b9327f847;           
+  0.0 pkts/s;nic:br-321c37b3d414;           
+  0.0 pkts/s;nic:br-98a466072c99;           
+  0.0 pkts/s;Network interface: ens4f0 (ixgbe);           
+  0.0 pkts/s;nic:veth981e90c;           
+  0.0 pkts/s;nic:ogstun;           
+  0.0 pkts/s;nic:demo-oai;           
+  0.0 pkts/s;nic:docker0;           
+  0.0 pkts/s;Network interface: enx84a93e8da244 (r8152);           
+  0.0 pkts/s;Network interface: ens4f1 (ixgbe);           
+  0.0%;Audio codec hwC1D0: Nvidia;           
+  0.0%;runtime-intel_pmc_core.0;           
+  0.0%;runtime-PNP0C14:00;           
+  0.0%;PCI Device: Intel Corporation Cannon Lake PCH SMBus Controller;           
+  0.0%;runtime-PNP0C09:01;           
+  0.0%;runtime-alarmtimer.0.auto;           
+  0.0%;runtime-reg-dummy;           
+  0.0%;runtime-iTCO_wdt;           
+  0.0%;runtime-kgdboc;           
+  0.0%;runtime-eisa.0;           
+  0.0%;runtime-microcode;           
+  0.0%;runtime-snd-soc-dummy;           
+  0.0%;runtime-intel_rapl_msr.0;           
+  0.0%;runtime-Fixed MDIO bus.0;           
+  0.0%;runtime-PNP0C0C:00;           
+  0.0%;runtime-ACPI000C:00;           
+  0.0%;runtime-PNP0C14:01;           
+  0.0%;I2C Adapter (i2c-4): nvkm-0000:01:00.0-aux-0004;           
+  0.0%;runtime-PNP0C14:02;           
+  0.0%;I2C Adapter (i2c-1): nvkm-0000:01:00.0-bus-0001;           
+  0.0%;I2C Adapter (i2c-10): nvkm-0000:01:00.0-aux-0007;           
+  0.0%;I2C Adapter (i2c-3): nvkm-0000:01:00.0-bus-0004;           
+  0.0%;runtime-pcspkr;           
+  0.0%;runtime-efi-framebuffer.0;           
+  0.0%;runtime-hp-wmi;           
+  0.0%;runtime-i8042;           
+  0.0%;runtime-serial8250;           
+  0.0%;runtime-IFX:00;           
+  0.0%;runtime-PNP0C04:00;           
+  0.0%;runtime-PNP0103:00;           
+  0.0%;runtime-PNP0C0E:00;           
+  0.0%;runtime-coretemp.0;           
+  0.0%;I2C Adapter (i2c-13): nvkm-0000:01:00.0-bus-0009;           
+  0.0%;I2C Adapter (i2c-17): sor-0006-0f82;           
+  0.0%;I2C Adapter (i2c-8): nvkm-0000:01:00.0-aux-0006;           
+  0.0%;I2C Adapter (i2c-15): sor-0006-0f81;           
+  0.0%;I2C Adapter (i2c-5): nvkm-0000:01:00.0-bus-0005;           
+  0.0%;I2C Adapter (i2c-14): nvkm-0000:01:00.0-aux-0009;           
+  0.0%;I2C Adapter (i2c-7): nvkm-0000:01:00.0-bus-0006;           
+  0.0%;I2C Adapter (i2c-16): sor-0006-0f41;           
+  0.0%;I2C Adapter (i2c-12): nvkm-0000:01:00.0-aux-0008;           
+  0.0%;I2C Adapter (i2c-6): nvkm-0000:01:00.0-aux-0005;           
+  0.0%;I2C Adapter (i2c-9): nvkm-0000:01:00.0-bus-0007;           
+  0.0%;I2C Adapter (i2c-0): SMBus I801 adapter at efa0;           
+  0.0%;I2C Adapter (i2c-2): nvkm-0000:01:00.0-bus-0002;           
+  0.0%;I2C Adapter (i2c-11): nvkm-0000:01:00.0-bus-0008;           
+____________________________________________________________________
+ *  *  *   Process Device Activity   *  *  *
+
+Process;Device
+systemd;/dev/autofs
+;/dev/dri/card0
+;/dev/input/event0
+;/dev/input/event1
+;/dev/input/event2
+;/dev/input/event3
+;/dev/input/event4
+;/dev/input/event5
+;/dev/input/event6
+;/dev/input/event7
+;/dev/kmsg
+;/dev/rfkill
+systemd-journal;/dev/kmsg
+;/dev/kmsg
+acpid;/dev/input/event0
+;/dev/input/event1
+;/dev/input/event10
+;/dev/input/event11
+;/dev/input/event12
+;/dev/input/event13
+;/dev/input/event14
+;/dev/input/event15
+;/dev/input/event16
+;/dev/input/event2
+;/dev/input/event3
+;/dev/input/event4
+;/dev/input/event5
+;/dev/input/event7
+;/dev/input/event8
+;/dev/input/event9
+systemd-logind;/dev/dri/card0
+;/dev/input/event0
+;/dev/input/event0
+;/dev/input/event1
+;/dev/input/event1
+;/dev/input/event2
+;/dev/input/event2
+;/dev/input/event3
+;/dev/input/event3
+;/dev/input/event4
+;/dev/input/event5
+;/dev/input/event5
+;/dev/input/event6
+;/dev/input/event7
+none;/dev/kmsg
+pulseaudio;/dev/snd/controlC0
+;/dev/snd/controlC0
+;/dev/snd/controlC0
+;/dev/snd/controlC1
+;/dev/snd/pcmC0D0p
+gvfsd-fuse;/dev/fuse
+Xorg;/dev/dri/card0
+;/dev/dri/card0
+;/dev/dri/card0
+;/dev/dri/card0
+;/dev/dri/card0
+;/dev/input/event0
+;/dev/input/event1
+;/dev/input/event2
+;/dev/input/event3
+;/dev/input/event4
+;/dev/input/event5
+;/dev/input/event6
+;/dev/input/event7
+indicator-bluet;/dev/rfkill
+indicator-keybo;/dev/dri/card0
+;/dev/dri/card0
+;/dev/dri/card0
+indicator-print;/dev/dri/card0
+;/dev/dri/card0
+;/dev/dri/card0
+gsd-rfkill;/dev/rfkill
+;/dev/rfkill
+xdg-document-po;/dev/fuse
+mount.ntfs;/dev/fuse
+;/dev/sdb2
+firefox;/dev/dri/card0
+;/dev/dri/card0
+;/dev/dri/card0
+;/dev/dri/card0
+;/dev/dri/card0
+;/dev/dri/renderD128
+
+____________________________________________________________________
+ *  *  *   AHCI ALPM Residency Statistics - Not supported on this macine   *  *  *
+
+____________________________________________________________________
+ *  *  *   Software Settings in Need of Tuning   *  *  *
+
+Description;Script
+VM writeback timeout;echo '1500' > '/proc/sys/vm/dirty_writeback_centisecs';
+Enable SATA link power management for host3;echo 'min_power' > '/sys/class/scsi_host/host3/link_power_management_policy';
+Enable SATA link power management for host1;echo 'min_power' > '/sys/class/scsi_host/host1/link_power_management_policy';
+Enable SATA link power management for host2;echo 'min_power' > '/sys/class/scsi_host/host2/link_power_management_policy';
+Enable SATA link power management for host0;echo 'min_power' > '/sys/class/scsi_host/host0/link_power_management_policy';
+NMI watchdog should be turned off;echo '0' > '/proc/sys/kernel/nmi_watchdog';
+Runtime PM for I2C Adapter i2c-14 (nvkm-0000:01:00.0-aux-0009);echo 'auto' > '/sys/bus/i2c/devices/i2c-14/device/power/control';
+Autosuspend for USB device HP USB Optical Mouse [PixArt];echo 'auto' > '/sys/bus/usb/devices/1-12/power/control';
+Autosuspend for USB device USB Keyboard [Logitech];echo 'auto' > '/sys/bus/usb/devices/1-11/power/control';
+Autosuspend for USB device USB 10/100/1000 LAN [Realtek];echo 'auto' > '/sys/bus/usb/devices/2-5/power/control';
+Runtime PM for I2C Adapter i2c-13 (nvkm-0000:01:00.0-bus-0009);echo 'auto' > '/sys/bus/i2c/devices/i2c-13/device/power/control';
+Runtime PM for I2C Adapter i2c-5 (nvkm-0000:01:00.0-bus-0005);echo 'auto' > '/sys/bus/i2c/devices/i2c-5/device/power/control';
+Runtime PM for I2C Adapter i2c-7 (nvkm-0000:01:00.0-bus-0006);echo 'auto' > '/sys/bus/i2c/devices/i2c-7/device/power/control';
+Runtime PM for I2C Adapter i2c-9 (nvkm-0000:01:00.0-bus-0007);echo 'auto' > '/sys/bus/i2c/devices/i2c-9/device/power/control';
+Runtime PM for I2C Adapter i2c-4 (nvkm-0000:01:00.0-aux-0004);echo 'auto' > '/sys/bus/i2c/devices/i2c-4/device/power/control';
+Runtime PM for I2C Adapter i2c-11 (nvkm-0000:01:00.0-bus-0008);echo 'auto' > '/sys/bus/i2c/devices/i2c-11/device/power/control';
+Runtime PM for I2C Adapter i2c-6 (nvkm-0000:01:00.0-aux-0005);echo 'auto' > '/sys/bus/i2c/devices/i2c-6/device/power/control';
+Runtime PM for I2C Adapter i2c-8 (nvkm-0000:01:00.0-aux-0006);echo 'auto' > '/sys/bus/i2c/devices/i2c-8/device/power/control';
+Runtime PM for I2C Adapter i2c-1 (nvkm-0000:01:00.0-bus-0001);echo 'auto' > '/sys/bus/i2c/devices/i2c-1/device/power/control';
+Runtime PM for I2C Adapter i2c-10 (nvkm-0000:01:00.0-aux-0007);echo 'auto' > '/sys/bus/i2c/devices/i2c-10/device/power/control';
+Runtime PM for I2C Adapter i2c-12 (nvkm-0000:01:00.0-aux-0008);echo 'auto' > '/sys/bus/i2c/devices/i2c-12/device/power/control';
+Runtime PM for I2C Adapter i2c-2 (nvkm-0000:01:00.0-bus-0002);echo 'auto' > '/sys/bus/i2c/devices/i2c-2/device/power/control';
+Runtime PM for I2C Adapter i2c-3 (nvkm-0000:01:00.0-bus-0004);echo 'auto' > '/sys/bus/i2c/devices/i2c-3/device/power/control';
+Runtime PM for PCI Device Intel Corporation Ethernet Connection (7) I219-LM;echo 'auto' > '/sys/bus/pci/devices/0000:00:1f.6/power/control';
+Runtime PM for PCI Device Intel Corporation Ethernet Controller 10G X550T;echo 'auto' > '/sys/bus/pci/devices/0000:02:00.0/power/control';
+Runtime PM for PCI Device Intel Corporation Ethernet Controller 10G X550T;echo 'auto' > '/sys/bus/pci/devices/0000:02:00.1/power/control';
+Runtime PM for PCI Device Intel Corporation Cannon Lake PCH Thermal Controller;echo 'auto' > '/sys/bus/pci/devices/0000:00:12.0/power/control';
+Runtime PM for PCI Device Intel Corporation 8th Gen Core 8-core Desktop Processor Host Bridge/DRAM Registers [Coffee Lake S];echo 'auto' > '/sys/bus/pci/devices/0000:00:00.0/power/control';
+Runtime PM for disk sdb;echo 'auto' > '/sys/block/sdb/device/power/control';
+Runtime PM for PCI Device Intel Corporation Cannon Lake PCH SPI Controller;echo 'auto' > '/sys/bus/pci/devices/0000:00:1f.5/power/control';
+Runtime PM for PCI Device NVIDIA Corporation GP107GL [Quadro P400];echo 'auto' > '/sys/bus/pci/devices/0000:01:00.0/power/control';
+Runtime PM for port ata1 of PCI device: Intel Corporation SATA Controller [RAID mode];echo 'auto' > '/sys/bus/pci/devices/0000:00:17.0/ata1/power/control';
+Runtime PM for PCI Device Intel Corporation SATA Controller [RAID mode];echo 'auto' > '/sys/bus/pci/devices/0000:00:17.0/power/control';
+Runtime PM for disk sda;echo 'auto' > '/sys/block/sda/device/power/control';
+Runtime PM for port ata3 of PCI device: Intel Corporation SATA Controller [RAID mode];echo 'auto' > '/sys/bus/pci/devices/0000:00:17.0/ata3/power/control';
+Runtime PM for port ata4 of PCI device: Intel Corporation SATA Controller [RAID mode];echo 'auto' > '/sys/bus/pci/devices/0000:00:17.0/ata4/power/control';
+Runtime PM for port ata2 of PCI device: Intel Corporation SATA Controller [RAID mode];echo 'auto' > '/sys/bus/pci/devices/0000:00:17.0/ata2/power/control';
+Runtime PM for PCI Device Intel Corporation Cannon Point-LP LPC Controller;echo 'auto' > '/sys/bus/pci/devices/0000:00:1f.0/power/control';
+Runtime PM for PCI Device Intel Corporation Cannon Lake PCH Shared SRAM;echo 'auto' > '/sys/bus/pci/devices/0000:00:14.2/power/control';
+Runtime PM for PCI Device Intel Corporation Cannon Lake PCH USB 3.1 xHCI Host Controller;echo 'auto' > '/sys/bus/pci/devices/0000:00:14.0/power/control';
+____________________________________________________________________
+ *  *  *   Untunable Software Issues   *  *  *
+
+Description
+I2C Adapter i2c-17 has no runtime power management
+I2C Adapter i2c-15 has no runtime power management
+I2C Adapter i2c-16 has no runtime power management
+____________________________________________________________________
+ *  *  *   Optimal Tuned Software Settings   *  *  *
+
+Description
+Enable Audio codec power management
+Runtime PM for I2C Adapter i2c-0 (SMBus I801 adapter at efa0)
+Autosuspend for USB device xHCI Host Controller [usb1]
+Autosuspend for USB device xHCI Host Controller [usb2]
+Runtime PM for PCI Device Intel Corporation Cannon Lake PCH SMBus Controller
+Runtime PM for PCI Device NVIDIA Corporation GP107GL High Definition Audio Controller
+Runtime PM for PCI Device Intel Corporation Cannon Lake PCH PCI Express Root Port #9
+Runtime PM for PCI Device Intel Corporation Cannon Lake PCH cAVS
+Runtime PM for PCI Device Intel Corporation Cannon Lake PCH HECI Controller
+Runtime PM for PCI Device Intel Corporation Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor PCIe Controller (x16)
+
+____________________________________________________________________
+ *  *  *   Wake status of the devices   *  *  *
+
+Description;Script
+Wake-on-lan status for device ens4f1;echo 'enabled' > '/sys/class/net/ens4f1/device/power/wakeup';
+Wake-on-lan status for device ens4f0;echo 'enabled' > '/sys/class/net/ens4f0/device/power/wakeup';
+Wake status for USB device 1-12;echo 'enabled' > '/sys/bus/usb/devices/1-12/power/wakeup';
+Wake status for USB device usb1;echo 'enabled' > '/sys/bus/usb/devices/usb1/power/wakeup';
+Wake status for USB device usb2;echo 'enabled' > '/sys/bus/usb/devices/usb2/power/wakeup';

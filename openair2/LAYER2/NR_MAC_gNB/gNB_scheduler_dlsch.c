@@ -373,6 +373,11 @@ void abort_nr_dl_harq(NR_UE_info_t* UE, int8_t harq_pid)
   NR_UE_sched_ctrl_t *sched_ctrl = &UE->UE_sched_ctrl;
   NR_UE_harq_t *harq = &sched_ctrl->harq_processes[harq_pid];
 
+  float a1 = 0.0250f;
+  // UE->g_mcs[UE->mcs] = UE->g_mcs[UE->mcs] + a1*(harq->round - UE->g_mcs[UE->mcs]);
+  UE->g_mcs[harq->sched_pdsch.mcs] = UE->g_mcs[harq->sched_pdsch.mcs] + a1*(harq->round - UE->g_mcs[harq->sched_pdsch.mcs]);
+  // printf("[Discard tbs] Reached max harq round(0 to %d) for UE %04x with harq_pid %d current_round %d \n",harq->round,UE->rnti,harq_pid,harq->round);
+
   harq->ndi ^= 1;
   harq->round = 0;
   UE->mac_stats.dl.errors++;
@@ -605,8 +610,48 @@ static void pf_dl(module_id_t module_id,
   int curUE = 0;
   int CC_id = 0;
 
+  /*section started: venkat */
+  static int cur_fr = 1024;
+  static int framecount = 0;
+  if(cur_fr != frame){
+  framecount++;
+  cur_fr = frame;
+  }
+  /* section ended: venkat */
+
+   // static int priority = 1;
+   int rnti_selected = 0;
+
   /* Loop UE_info->list to check retransmission */
   UE_iterator(UE_list, UE) {
+
+	    // float a1 = 0.0250f;
+	    // printf("lmla4b slot %d %d %04x %d %f %d %d %d %.6f\n",frame,slot,UE->rnti,UE->mcs,UE->g_mcs[UE->mcs],UE->slot_count,UE->retx_slot_count,UE->mac_stats.dl.current_bytes,UE->UE_sched_ctrl.dl_bler_stats.bler);
+            // printf("frame %d.slot %d \n",frame,slot);
+	    // float tmu = (float) UE->slot_count / (UE->slot_count - UE->retx_slot_count);
+	    // printf("[%s]tmu is %f\n", __func__, tmu);
+	    // UE->t_mcs[UE->mcs] = UE->t_mcs[UE->mcs] + a1*(tmu - UE->t_mcs[UE->mcs]);
+	  /*section*/
+      static struct timespec timeofday;
+
+      clock_gettime(CLOCK_MONOTONIC,&timeofday);
+      if(UE->mcs > 6){
+      if(framecount % 5 == 0 && slot == 1){
+            //printf("lmla4b 5frames %d %d %04x %d %f %d %d %ld %.6f)\n",frame,slot,UE->rnti,UE->mcs,UE->g_mcs[UE->mcs],
+//			                                         UE->slot_count,UE->retx_slot_count,(UE->mac_stats.dl.total_bytes - UE->mac_stats.dl.temp_bytes),UE->UE_sched_ctrl.dl_bler_stats.bler);
+            UE->mac_stats.dl.temp_bytes = UE->mac_stats.dl.total_bytes;
+            // printf("timestamp is %ld \n",timeofday.tv_nsec);
+            //printf("timestamp is %lld.%.6ld\n", (long long)timeofday.tv_sec, timeofday.tv_nsec / 1000);
+            //printf("UE %04x thr %f \n",UE->rnti,UE->dl_thr_ue);
+	    UE->slot_count = 0;
+	    UE->retx_slot_count = 0;
+         }
+      }
+      /* section */
+    //printf("slot %d %d %04x %d %d %d %d %.6f)\n",frame,slot,UE->rnti,UE->mcs,
+     //        		                   UE->tbs,UE->slot_type,UE->mac_stats.dl.current_bytes,UE->UE_sched_ctrl.dl_bler_stats.bler);
+    UE->slot_type = 0;
+
     if (UE->Msg4_ACKed != true)
       continue;
 
@@ -621,9 +666,20 @@ static void pf_dl(module_id_t module_id,
     /* get the PID of a HARQ process awaiting retrnasmission, or -1 otherwise */
     sched_pdsch->dl_harq_pid = sched_ctrl->retrans_dl_harq.head;
     /* Calculate Throughput */
-    const float a = 0.01f;
+    const float a = 0.0005f;
     const uint32_t b = UE->mac_stats.dl.current_bytes;
     UE->dl_thr_ue = (1 - a) * UE->dl_thr_ue + a * b;
+
+    /* section added : venkat */
+    static float nu1 = 0.0000f; /* bytes*/
+    /* static float nu2 = 0.0000f;  bytes */
+    /* static float tc = 0.0000f;*/
+    const float ba = 0.0000005f; //00005f;  0.0000000005f
+    const float rg = 7145.0000f; /*8930.0000f; 13395.0000f; 17860.0000f;  19455.0000f  24319.0000f;  bytes per slot */
+    /* const int timeframe = 10240;  1024 for 10 sec. */
+    /*const int rgs = 0;  0 for PF-RG-LM and 1 for PF-RG-TC */
+    /* section ended : venkat */
+
 
     if (remainUEs == 0)
       continue;
@@ -638,10 +694,17 @@ static void pf_dl(module_id_t module_id,
               UE->rnti,
               frame,
               slot);
+	rnti_selected++;
         continue;
       }
       /* reduce max_num_ue once we are sure UE can be allocated, i.e., has CCE */
+
+      //printf("frame %d slot %d UE %04x retransmission\n",frame,slot,UE->rnti);
+      UE->slot_count++;
+      UE->retx_slot_count++;
+      UE->slot_type = 2;
       remainUEs--;
+      rnti_selected++;
 
     } else {
       /* skip this UE if there are no free HARQ processes. This can happen e.g.
@@ -652,12 +715,15 @@ static void pf_dl(module_id_t module_id,
               UE->rnti,
               frame,
               slot);
+	rnti_selected++;
         continue;
       }
 
       /* Check DL buffer and skip this UE if no bytes and no TA necessary */
-      if (sched_ctrl->num_total_bytes == 0 && frame != (sched_ctrl->ta_frame + 10) % 1024)
+      if (sched_ctrl->num_total_bytes == 0 && frame != (sched_ctrl->ta_frame + 10) % 1024){
+	rnti_selected++;
         continue;
+      }
 
       /* Calculate coeff */
       const NR_bler_options_t *bo = &mac->dl_bler;
@@ -667,6 +733,8 @@ static void pf_dl(module_id_t module_id,
         sched_pdsch->mcs = max_mcs;
       else
         sched_pdsch->mcs = get_mcs_from_bler(bo, stats, &sched_ctrl->dl_bler_stats, max_mcs, frame);
+      
+     // printf ("frame %4d slot %2d UE %4x dl_bler_stats %f\n",frame,slot,UE->rnti,sched_ctrl->dl_bler_stats.bler);
       sched_pdsch->nrOfLayers = get_dl_nrOfLayers(sched_ctrl, current_BWP->dci_format);
       sched_pdsch->pm_index =
           get_pm_index(mac, UE, current_BWP->dci_format, sched_pdsch->nrOfLayers, mac->radio_config.pdsch_AntennaPorts.XP);
@@ -680,7 +748,71 @@ static void pf_dl(module_id_t module_id,
                                     0 /* N_PRB_oh, 0 for initialBWP */,
                                     0 /* tb_scaling */,
                                     sched_pdsch->nrOfLayers) >> 3;
-      float coeff_ue = (float) tbs / UE->dl_thr_ue;
+        // float coeff_ue = (float) tbs / UE->dl_thr_ue;
+	float coeff_ue; 
+        UE->mcs = sched_pdsch->mcs;
+        int s_mcs2tbs[28] = {123,123,123,123,123,123,3138,3521,3969,4482,4737,4992,5637,6147,6661,7172,7813,8448,8961,9474,9737,10247,10755,11525,12033,12802,13322,13569};
+        int n_mcs2tbs[28] = {123,123,123,123,123,123,8448,9474,10497,11781,12549,13322,14862,16397,17925,18951,20497,22026,23572,25101,26122,27141,29201,30747,32268,33822,34847,36897};
+
+        if(slot == 6 || slot == 16){
+         coeff_ue = ((float) s_mcs2tbs[UE->mcs] - UE->dl_thr_ue * UE->g_mcs[UE->mcs]);
+         }
+        else{
+         coeff_ue = ((float) n_mcs2tbs[UE->mcs] - UE->dl_thr_ue * UE->g_mcs[UE->mcs]);
+         }
+
+	if(rnti_selected == 0){
+          coeff_ue *= (1 / UE->dl_thr_ue);
+        /*printf("LM: UE0 %04x - MCS %2d\n",UE->rnti,sched_pdsch->mcs); printf("[UE %04x][%4d.%2d] b %d, thr_ue %f, tbs %d, coeff_ue %f\n",UE->rnti,frame,slot,b,UE->dl_thr_ue,tbs,coeff_ue);*/
+          //printf("LM: UE0 %04x - thr %f \n",UE->rnti,UE->dl_thr_ue);
+         }
+        if(rnti_selected == 1){
+	nu1 = nu1 + ba * (rg - UE->dl_thr_ue);/* pf RG code */
+        /*printf("eta update, eta %f, ba %f,rg %f \n", eta,ba,rg);*/
+
+        if(nu1< 0.0000f){
+          /*printf("eta(%f)<0, ba %f, rg %f \n", eta,ba,rg);*/
+          nu1 = 0.0000f;/* pf RG code */
+          }
+        if(nu1 >=10.0000f){
+          /*printf("eta(%f)>=10, ba %f, rg %f \n",eta,ba,rg);*/
+          nu1 = 10.0000f;
+          }
+          coeff_ue *= ((1 / UE->dl_thr_ue) + nu1);
+         /* printf("UE1 %04x - MCS %2d\n",UE->rnti,sched_pdsch->mcs)("eta %f,rg %f, ba %f,[UE %04x][%4d.%2d] b %d, thr_ue %f, tbs %d, coeff_ue %f\n",eta,rg,ba,UE->rnti,frame,slot,b,UE->dl_thr_ue,tbs,coeff_ue);*/
+          //printf("LM: UE1 %04x - thr %f \n",UE->rnti,UE->dl_thr_ue);
+          //printf("LM: UE1 %04x - nu1 %f \n",UE->rnti,nu1);
+          }
+	if(rnti_selected == 2){
+          coeff_ue *= (1 / UE->dl_thr_ue);
+        /*printf("LM: UE2 %04x - MCS %2d\n",UE->rnti,sched_pdsch->mcs); printf("[UE %04x][%4d.%2d] b %d, thr_ue %f, tbs %d, coeff_ue %f\n",UE->rnti,frame,slot,b,UE->dl_thr_ue,tbs,coeff_ue);*/
+          //printf("LM: UE2 %04x - thr %f \n",UE->rnti,UE->dl_thr_ue);
+         }
+	if(rnti_selected == 3){
+          coeff_ue *= (1 / UE->dl_thr_ue);
+        /*printf("LM: UE3 %04x - MCS %2d\n",UE->rnti,sched_pdsch->mcs); printf("[UE %04x][%4d.%2d] b %d, thr_ue %f, tbs %d, coeff_ue %f\n",UE->rnti,frame,slot,b,UE->dl_thr_ue,tbs,coeff_ue);*/
+          //printf("LM: UE3 %04x - thr %f \n",UE->rnti,UE->dl_thr_ue);
+         }
+	if(rnti_selected == 4){
+          coeff_ue *= (1 / UE->dl_thr_ue);
+        /*printf("LM: UE4 %04x - MCS %2d\n",UE->rnti,sched_pdsch->mcs); printf("[UE %04x][%4d.%2d] b %d, thr_ue %f, tbs %d, coeff_ue %f\n",UE->rnti,frame,slot,b,UE->dl_thr_ue,tbs,coeff_ue);*/
+          //printf("LM: UE4 %04x - thr %f \n",UE->rnti,UE->dl_thr_ue);
+         }
+         rnti_selected++;
+
+    /* if(rnti_selected == 0){
+              //printf("RR: frame %4d slot %2d UE %04x - MCS %2d - thr %f - slot %d - TBS %d - bler %.6f\n",
+       	//		      frame,slot,UE->rnti,sched_pdsch->mcs,UE->dl_thr_ue,UE->slot_count,b,UE->UE_sched_ctrl.dl_bler_stats.bler);
+              coeff_ue *= priority;
+              priority = 1 - priority;
+      }
+      if(rnti_selected == 1){
+	 //     printf("RR: frame %4d slot %2d UE %04x - MCS %2d - thr %f - slot %d - TBS %d - bler %.6f\n",
+	//		      frame,slot,UE->rnti,sched_pdsch->mcs,UE->dl_thr_ue,UE->slot_count,b,UE->UE_sched_ctrl.dl_bler_stats.bler);
+              coeff_ue *= priority;
+      }
+      rnti_selected++;
+     */ 
       LOG_D(NR_MAC, "[UE %04x][%4d.%2d] b %d, thr_ue %f, tbs %d, coeff_ue %f\n",
             UE->rnti,
             frame,
@@ -718,7 +850,7 @@ static void pf_dl(module_id_t module_id,
       iterator++;
       continue;
     }
-
+    // printf("%04d.%2d [UE %04x]\n",frame,slot,rnti);
     int CCEIndex = get_cce_index(mac,
                                  CC_id, slot, iterator->UE->rnti,
                                  &sched_ctrl->aggregation_level,
@@ -732,6 +864,10 @@ static void pf_dl(module_id_t module_id,
             frame,
             slot);
       iterator++;
+      printf("[UE %04x][%4d.%2d] could not find free CCE for DL DCI\n",
+            rnti,
+            frame,
+            slot);
       continue;
     }
 
@@ -747,6 +883,10 @@ static void pf_dl(module_id_t module_id,
             frame,
             slot);
       iterator++;
+      printf("[UE %04x][%4d.%2d] could not find PUCCH for DL DCI\n",
+            rnti,
+            frame,
+            slot);
       continue;
     }
 
@@ -1022,7 +1162,7 @@ void nr_schedule_ue_spec(module_id_t module_id,
           pucch->ul_slot,
           sched_pdsch->pucch_allocation,
           sched_ctrl->tpc1);
-
+    //printf("DL frame.slot %4d.%2d %04x rbSize %3d MCS %2d\n", frame, slot, rnti, sched_pdsch->rbSize, sched_pdsch->mcs);
     const int bwp_id = current_BWP->bwp_id;
     const int coresetid = sched_ctrl->coreset->controlResourceSetId;
 
@@ -1359,6 +1499,12 @@ void nr_schedule_ue_spec(module_id_t module_id,
       UE->mac_stats.dl.total_sdu_bytes += dlsch_total_bytes;
       gNB_mac->mac_stats.used_prb_aggregate += sched_pdsch->rbSize;
 
+      if(TBS > 0){
+        UE->slot_count++;
+        UE->slot_type = 1;
+      }
+ 
+      // printf("%d.%2d UE %04x RBs %3d \n",frame,slot,UE->rnti,sched_pdsch->rbSize);
       /* save retransmission information */
       harq->sched_pdsch = *sched_pdsch;
       /* save which time allocation has been used, to be used on

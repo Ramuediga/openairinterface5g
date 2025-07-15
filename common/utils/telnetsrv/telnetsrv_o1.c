@@ -32,6 +32,8 @@
 #define TELNETSERVERCODE
 #include "telnetsrv.h"
 
+// #include "common/ran_context.h"
+#include "PHY/defs_gNB.h"
 #include "openair2/RRC/NR/nr_rrc_defs.h"
 #include "openair2/LAYER2/NR_MAC_gNB/nr_mac_gNB.h"
 #include "openair2/RRC/NR/nr_rrc_config.h"
@@ -58,6 +60,9 @@
 #define MNC     "nrcelldu3gpp:mnc"
 #define SD      "nrcelldu3gpp:sd"
 #define SST     "nrcelldu3gpp:sst"
+
+static int start_modem(char *buf, int debug, telnet_printfunc_t prnt);
+static int stop_modem(char *buf, int debug, telnet_printfunc_t prnt);
 
 typedef struct b {
   long int dl;
@@ -120,6 +125,8 @@ static int get_stats(char *buf, int debug, telnet_printfunc_t prnt)
       nr_rlc_get_statistics(it->rnti, srb_flag, rb_id, &rlc);
       // static var last_total: we might have old data, larger than what
       // reports RLC, leading to a huge number -> cut off to zero
+      //const int avg_rsrp = stats->num_rsrp_meas > 0 ? stats->cumul_rsrp / stats->num_rsrp_meas : 0;
+
       if (last_total[i].dl > rlc.txpdu_bytes)
         last_total[i].dl = rlc.txpdu_bytes;
       if (last_total[i].ul > rlc.rxpdu_bytes)
@@ -218,6 +225,7 @@ static int read_long(const char *buf, const char *end, const char *id, long *val
   curr += len;
   while (isspace(*curr) && curr < end) // skip middle spaces
     curr++;
+
   if (curr >= end)
     return -1;
   int nread = sscanf(curr, "%ld", val);
@@ -326,6 +334,109 @@ static int set_config(char *buf, int debug, telnet_printfunc_t prnt)
 
 extern int8_t threequarter_fs;
 extern openair0_config_t openair0_cfg[MAX_CARDS];
+
+static int set_power_state(char *buf, int debug, telnet_printfunc_t prnt) 
+{
+
+
+     if((!strcmp(buf, "full-power-state"))||(!strcmp(buf, "AWAKE"))) {
+         if(running == true) {
+         printf ("***** Already in full power state!****\n");
+         return 0;
+        }
+         printf ("***** full power state!****\n");
+         start_modem(buf, debug, prnt);
+      }
+
+     else if((!strcmp(buf, "off-state"))||(!strcmp(buf, "SLEEPING"))) {
+         if(running == false) {
+         printf ("***** Already in power off state!****\n");
+         return 0;
+        }
+           stop_modem(buf, debug, prnt);
+           printf ("***** off state!****\n");
+
+      }
+     else if(!strcmp(buf, "low-power-state")) {
+
+           printf ("***** low power state!****\n");
+           set_low_power_state();
+     }
+
+    else printf ("Unknown power state : %s\n", buf);
+
+return 0;
+
+}
+
+int set_low_power_state(char *buf, int debug, telnet_printfunc_t prnt) 
+{
+  const gNB_MAC_INST *mac = RC.nrmac[0];
+  AssertFatal(mac != NULL, "need MAC\n");
+
+  const gNB_RRC_INST *rrc = RC.nrrrc[0];
+  const gNB_RrcConfigurationReq *conf = &rrc->configuration;
+  AssertFatal(rrc != NULL, "need RRC\n");
+  const PHY_VARS_gNB *gNB = RC.gNB[0];
+
+   
+  RU_t *ru = gNB->RU_list[0];
+
+  const NR_ServingCellConfigCommon_t *scc = mac->common_channels[0].ServingCellConfigCommon;
+
+ if (ru == NULL) {
+
+       printf ("RU is NULL, powered off ?\n");
+       return 0;
+
+}
+
+  printf ("XP: %d N1: %d N2: %d nb_tx: %d nb_rx: %d\n", 
+                     mac->radio_config.pdsch_AntennaPorts.XP, 
+                     mac->radio_config.pdsch_AntennaPorts.N1,
+                     mac->radio_config.pdsch_AntennaPorts.N2,
+                     ru->nb_tx,
+                     ru->nb_rx);
+ 	// ru->nb_tx   = capabilities->nb_tx[0];
+  	// ru->nb_rx   = capabilities->nb_rx[0];
+  	// ru->nb_tx     = *(RUParamList.paramarray[j][RU_NB_TX_IDX].uptr);
+  	// ru->nb_rx     = *(RUParamList.paramarray[j][RU_NB_RX_IDX].uptr);
+
+	{
+	  if (running)
+	    ERROR_MSG_RET("cannot set parameters while L1 is running\n");
+	  if (!buf)
+	    ERROR_MSG_RET("need param: o1 power_state <BW>\n");
+
+		  char *end = NULL;
+	  if (NULL != (end = strchr(buf, '\n')))
+	    *end = 0;
+	  if (NULL != (end = strchr(buf, '\r')))
+	    *end = 0;
+	}
+/*
+  if(strcmp(buf,"2") ==0) 
+    {
+
+         ru->nb_tx =2;
+    	 ru->nb_rx =2; 
+	stop_modem(buf, debug, prnt);
+    }
+  else if (strcmp(buf,"1") ==0)
+    {
+
+         ru->nb_tx =1;
+    	 ru->nb_rx =1;
+        start_modem(buf, debug, prnt);
+    }
+  else {
+    ERROR_MSG_RET("Antenna_port unhandled option %s\n", buf);
+  }
+*/
+return 0;
+
+}
+
 static int set_bwconfig(char *buf, int debug, telnet_printfunc_t prnt)
 {
   if (running)
@@ -413,7 +524,7 @@ static int stop_modem(char *buf, int debug, telnet_printfunc_t prnt)
   }
   usleep(50000);
 
-  stop_L1L2(0);
+  stop_L1L2(0);  //tempararily commented this line and it should be recover afterwords: Rama_15042024
   running = false;
   prnt("OK\n");
   return 0;
@@ -434,6 +545,8 @@ static telnetshell_cmddef_t o1cmds[] = {
   {"stats", "", get_stats},
   {"config", "[]", set_config},
   {"bwconfig", "", set_bwconfig},
+  {"power_state", "", set_power_state},
+  {"low_power_state", "", set_low_power_state},
   {"stop_modem", "", stop_modem},
   {"start_modem", "", start_modem},
   {"", "", NULL},

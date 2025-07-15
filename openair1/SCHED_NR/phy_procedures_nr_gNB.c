@@ -150,6 +150,7 @@ void phy_procedures_gNB_TX(processingData_L1tx_t *msgTx,
     memset(&gNB->common_vars.beam_id[aa][slot*fp->symbols_per_slot],255,fp->symbols_per_slot*sizeof(uint8_t));
   }
 
+
   // Check for PRS slot - section 7.4.1.7.4 in 3GPP rel16 38.211
   for(int rsc_id = 0; rsc_id < gNB->prs_vars.NumPRSResources; rsc_id++)
   {
@@ -160,7 +161,7 @@ void phy_procedures_gNB_TX(processingData_L1tx_t *msgTx,
       {
         slot_prs = (slot - i*prs_config->PRSResourceTimeGap + fp->slots_per_frame)%fp->slots_per_frame;
         LOG_D(PHY,"gNB_TX: frame %d, slot %d, slot_prs %d, PRS Resource ID %d\n",frame, slot, slot_prs, rsc_id);
-        nr_generate_prs(gNB->nr_gold_prs[rsc_id][slot_prs],&gNB->common_vars.txdataF[0][txdataF_offset], AMP, prs_config, cfg, fp);
+        nr_generate_prs(gNB->nr_gold_prs[rsc_id][slot_prs],&gNB->common_vars.txdataF[0][txdataF_offset], AMP, prs_config, cfg, fp); 
       }
     }
   }
@@ -191,9 +192,10 @@ void phy_procedures_gNB_TX(processingData_L1tx_t *msgTx,
   if (msgTx->num_pdsch_slot > 0) {
     VCD_SIGNAL_DUMPER_DUMP_FUNCTION_BY_NAME(VCD_SIGNAL_DUMPER_FUNCTIONS_GENERATE_DLSCH,1);
     LOG_D(PHY, "PDSCH generation started (%d) in frame %d.%d\n", msgTx->num_pdsch_slot,frame,slot);
-    nr_generate_pdsch(msgTx, frame, slot);
+    nr_generate_pdsch(msgTx, frame, slot); 
     VCD_SIGNAL_DUMPER_DUMP_FUNCTION_BY_NAME(VCD_SIGNAL_DUMPER_FUNCTIONS_GENERATE_DLSCH,0);
   }
+
 
   for (int i = 0; i < NR_SYMBOLS_PER_SLOT; i++){
     NR_gNB_CSIRS_t *csirs = &msgTx->csirs_pdu[i];
@@ -218,7 +220,9 @@ void phy_procedures_gNB_TX(processingData_L1tx_t *msgTx,
     }
   }
 
+
 //  if ((frame&127) == 0) dump_pdsch_stats(gNB);
+
 
   //apply the OFDM symbol rotation here
   if (gNB->phase_comp) {
@@ -236,6 +240,7 @@ void phy_procedures_gNB_TX(processingData_L1tx_t *msgTx,
         T_INT(aa), T_BUFFER(&gNB->common_vars.txdataF[aa][txdataF_offset], fp->samples_per_slot_wCP*sizeof(int32_t)));
     }
   }
+
 
   VCD_SIGNAL_DUMPER_DUMP_FUNCTION_BY_NAME(VCD_SIGNAL_DUMPER_FUNCTIONS_PHY_PROCEDURES_gNB_TX + gNB->CC_id, 0);
 }

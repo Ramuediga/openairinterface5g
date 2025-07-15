@@ -386,14 +386,21 @@ static void handle_dl_harq(NR_UE_info_t * UE,
   harq->feedback_slot = -1;
   harq->is_waiting = false;
   if (success) {
+    float a1 = 0.0250f;
+    // UE->g_mcs[UE->mcs] = UE->g_mcs[UE->mcs] + a1*(harq->round - UE->g_mcs[UE->mcs]);
+    UE->g_mcs[harq->sched_pdsch.mcs] = UE->g_mcs[harq->sched_pdsch.mcs] + a1*(harq->round - UE->g_mcs[harq->sched_pdsch.mcs]);
+    // printf("UE %04x UE->mcs %d harq->mcs %d updated w/ harq_round %d g[UE->mcs] %f g[harq->mcs] %f \n",UE->rnti,UE->mcs,harq->sched_pdsch.mcs,harq->round,UE->g_mcs[UE->mcs],UE->g_mcs[harq->sched_pdsch.mcs]);
     add_tail_nr_list(&UE->UE_sched_ctrl.available_dl_harq, harq_pid);
     harq->round = 0;
     harq->ndi ^= 1;
   } else if (harq->round >= harq_round_max - 1) {
     abort_nr_dl_harq(UE, harq_pid);
     LOG_D(NR_MAC, "retransmission error for UE %04x (total %"PRIu64")\n", UE->rnti, UE->mac_stats.dl.errors);
+    printf("retransmission error for UE %04x (total %"PRIu64")\n", UE->rnti, UE->mac_stats.dl.errors);
+    // printf("retransmission error for UE %04x (total %"PRIu64")\n", UE->rnti, UE->mac_stats.dl.errors);
   } else {
     LOG_D(PHY,"NACK for: pid %d, ue %04x\n",harq_pid, UE->rnti);
+    // printf("NACK for: pid %d, ue %04x\n",harq_pid, UE->rnti);
     add_tail_nr_list(&UE->UE_sched_ctrl.retrans_dl_harq, harq_pid);
     harq->round++;
   }
